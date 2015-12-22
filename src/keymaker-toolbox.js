@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import sjcl from 'sjcl';
 
 const Characters = {
   lower: 'abcdefghijklmnopqrstuvwxyz'.split(''),
@@ -9,8 +9,11 @@ const Characters = {
 
 const keymakerToolbox = {
   makeKey(password, salt, iterations=100000, keylen=32, lower=true, upper=true, number=true, special=true) {
-    let dk = crypto.pbkdf2Sync(password, salt, iterations, keylen, 'SHA256');
-    let hex = dk.toString('hex');
+    let dk = sjcl.misc.pbkdf2(password,
+                              sjcl.codec.utf8String.toBits(salt),
+                              iterations,
+                              keylen * 8);
+    let hex = sjcl.codec.hex.fromBits(dk);
 
     let types = [];
     const allTypes = ['lower', 'upper', 'number', 'special'];

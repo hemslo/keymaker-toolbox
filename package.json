@@ -61,5 +61,8 @@
       "spy",
       "expect"
     ]
+  },
+  "dependencies": {
+    "sjcl": "^1.0.3"
   }
 }
