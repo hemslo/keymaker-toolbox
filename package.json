@@ -1,6 +1,6 @@
 {
   "name": "keymaker-toolbox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Toolbox of keymaker.",
   "main": "dist/keymaker-toolbox.js",
   "scripts": {

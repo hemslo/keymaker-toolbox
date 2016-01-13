@@ -70,6 +70,9 @@ function build() {
           { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
         ]
       },
+      externals: {
+        'sjcl': 'sjcl'
+      },
       devtool: 'source-map'
     }))
     .pipe(gulp.dest(destinationFolder))
